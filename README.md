@@ -29,6 +29,7 @@ Streaks & Milestones: Encourage users to maintain streaks (e.g., "You’ve been 
 
 4. Linking the signup and login with a backend like *MongoDB* can prove to be a game changer in storing the users and passwords of the users (including the feature of two step verification, email or *github* login, otp verification)
 5. The profile icon can be made functional by providing a edit pfp button where users can upload their custom profile picture 
+6. There might be some bugs as this is a prototype
 
 ## Acknowledgements
 As a complete beginner, participating in my first hackathon was a valuable learning experience. I leveraged various OpenAI tools to assist with coding, problem-solving, and enhancing my understanding of key concepts, which helped me make significant progress throughout the event.
