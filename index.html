@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Timer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Video Background -->
+    <video id="bg-video" autoplay loop muted>
+        <source src="videos/starrynight.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Profile Icon & Dropdown -->
+    <div class="profile-container">
+        <button id="profile-button"></button>
+        <div id="profile-options">
+            <button class="profile-option-button">Logout</button>
+        </div>
+    </div>
+
+    <!-- Main Container for Timer -->
+    <div class="container">
+        <h1 id="timer-title">FOCUS TIMER</h1>
+        <div class="timer-container">
+            <svg class="base-timer__svg" viewBox="0 0 100 100">
+                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                <path id="base-timer-path-remaining" stroke-dasharray="283" class="base-timer__path-remaining" d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"></path>
+            </svg>
+            <span id="base-timer-label" class="base-timer__label">25:00</span>
+        </div>
+        <div class="control-buttons">
+            <button id="start-button">Start</button>
+            <button id="pause-button" style="display: none;">Pause</button>
+            <button id="resume-button" style="display: none;">Resume</button>
+            <button id="reset-button">Reset Timer</button>
+        </div>
+    </div>
+
+    <!-- Gear icon and settings menu -->
+    <div id="gear-container">
+        <img id="gear-icon" src="images/gear.png" alt="Settings" />
+        <div id="settings-menu" style="display:none;">
+            <button id="pomodoro-button">Pomodoro (25 min work, 5 min break)</button>
+            <button id="focus-button">Focus (50 min work, 10 min break)</button>
+            <button id="custom-button">Custom</button>
+        </div>
+    </div>
+
+    <!-- Logout Button at the Bottom Right -->
+    <button id="logout-button" onclick="logout()">Logout</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

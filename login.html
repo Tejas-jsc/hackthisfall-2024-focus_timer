@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Timer - Login & Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Google font link for Press Start 2P -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background for retro vibes */
+            overflow: hidden;
+            height: 100vh;
+            color: #fff;
+            background-image: url('images/loginbg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Login Container */
+        .login-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 420px; /* Fixed width for the container */
+            background-color: rgba(25, 25, 25, 0.9); /* Slightly darker background for contrast */
+            border-radius: 12px;
+            padding: 50px 35px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        /* Title Styling */
+        h2 {
+            font-family: 'Press Start 2P', cursive; /* Applied Press Start 2P font */
+            font-size: 36px;
+            font-weight: 700; /* Bold weight */
+            margin-bottom: 30px;
+            color: #39FF14; /* Neon green color */
+            text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14; /* Neon glow effect */
+        }
+
+        /* Input Fields */
+        .input-field {
+            width: 90%; /* Reduced width from 100% to 90% */
+            padding: 12px;
+            margin: 12px 0; /* Increased margin between fields */
+            border-radius: 6px;
+            border: 1px solid #5f5f5f; /* Light grey border */
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .input-field:focus {
+            border-color: #00bfff; /* Electric blue on focus */
+            outline: none;
+        }
+
+        /* Button Styling */
+        .submit-btn {
+            width: 90%; /* Reduced button width from 100% to 90% */
+            padding: 14px;
+            background: linear-gradient(45deg, #6a1b9a, #00bfff); /* Electric blue gradient */
+            color: black;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(45deg, #4a148c, #0090b7);
+            box-shadow: 0 0 15px 5px rgba(0, 191, 255, 0.7);
+            transform: scale(1.05); /* Slight scale-up effect */
+        }
+
+        .submit-btn:active {
+            box-shadow: 0 0 25px 10px rgba(0, 191, 255, 0.8);
+            transform: scale(0.98); /* Slight shrink on click */
+        }
+
+        /* Button Container for Switching Forms */
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background: linear-gradient(45deg, #6a1b9a, #00bfff);
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 45%;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .button-container button:hover {
+            background: linear-gradient(45deg, #4a148c, #0090b7);
+            box-shadow: 0 0 15px 5px rgba(0, 191, 255, 0.7);
+            transform: scale(1.05);
+        }
+
+        .button-container button:active {
+            box-shadow: 0 0 25px 10px rgba(0, 191, 255, 0.8);
+            transform: scale(0.98);
+        }
+
+        /* Hide signup form initially */
+        #signupForm {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .toggle-button {
+            width: 100%;
+        }
+
+        /* Responsive design for small screens */
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .button-container button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <!-- Buttons to toggle between login and signup forms -->
+        <div class="button-container">
+            <button type="button" class="toggle-button" onclick="showLoginForm()">Login</button>
+            <button type="button" class="toggle-button" onclick="showSignupForm()">Sign Up</button>
+        </div>
+        
+        <!-- Login Form -->
+        <form id="loginForm" style="display:block;">
+            <input type="text" class="input-field" id="username" placeholder="Username" required>
+            <input type="password" class="input-field" id="password" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+        
+        <!-- Sign Up Form -->
+        <form id="signupForm">
+            <input type="text" class="input-field" id="newUsername" placeholder="Username" required>
+            <input type="password" class="input-field" id="newPassword" placeholder="Password" required>
+            <input type="password" class="input-field" id="confirmPassword" placeholder="Confirm Password" required>
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        // Show the login form and hide the signup form
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = "block";
+            document.getElementById('signupForm').style.display = "none";
+            document.querySelector('h2').innerText = 'Login'; // Change title to "Login"
+        }
+
+        // Show the signup form and hide the login form
+        function showSignupForm() {
+            document.getElementById('signupForm').style.display = "block";
+            document.getElementById('loginForm').style.display = "none";
+            document.querySelector('h2').innerText = 'Sign Up'; // Change title to "Sign Up"
+        }
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            // Example: Basic validation (replace with real authentication logic)
+            if (username === "user" && password === "password123") {
+                alert("Login successful!");
+                window.location.href = "timer.html"; // Redirect to the timer page
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+
+        // Handle signup form submission
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let username = document.getElementById('newUsername').value;
+            let password = document.getElementById('newPassword').value;
+            let confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Basic validation for signup form
+            if (password === confirmPassword) {
+                alert("Account created successfully!");
+                document.getElementById('signupForm').reset();  // Reset form fields after successful signup
+                showLoginForm(); // Show login form after successful signup
+            } else {
+                alert("Passwords do not match. Please try again.");
+            }
+        });
+    </script>
+
+</body>
+</html>

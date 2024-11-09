@@ -1,0 +1,299 @@
+/* Global Styles */
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Profile Icon Button */
+.profile-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+#profile-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #D2FF72;
+    background-image: url('images/default.png');
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+/* Profile Options Dropdown */
+#profile-options {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    display: none;
+    width: 200px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.show-options {
+    display: block;
+}
+
+/* Timer Styles */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+    color: #D2FF72;
+}
+
+h1 {
+    font-size: 36px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+.timer-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.base-timer__svg {
+    transform: rotate(90deg);
+}
+
+.base-timer__path-elapsed {
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 8px;
+    fill: none;
+}
+
+.base-timer__path-remaining {
+    stroke: #D2FF72;
+    stroke-width: 8px;
+    fill: none;
+    transition: stroke-dasharray 1s linear;
+}
+
+.base-timer__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Button Styling */
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.7); /* Dark background to match with video */
+    color: #B5B5B5; /* Light grey text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+/* Neon hover effect */
+button:hover {
+    background: rgba(0, 0, 0, 0.85); /* Slightly darker for hover */
+    color: #00FF00; /* Neon green text color on hover */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Green neon glow */
+    transform: scale(1.1); /* Slight scale up for emphasis */
+}
+
+/* Arrow for side menu */
+#arrow-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 3;
+    transition: transform 0.3s ease-in-out;
+}
+
+#arrow {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: solid 3px #D2FF72;
+    border-width: 3px 3px 0 0;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+#arrow:hover {
+    transform: rotate(45deg) scale(1.1);
+    box-shadow: 0px 0px 10px #D2FF72;
+}
+
+/* Side Menu */
+#side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.7);
+    transition: right 0.3s ease;
+    z-index: 2;
+    padding-top: 60px;
+}
+
+#side-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#side-menu li {
+    padding: 15px;
+    font-size: 18px;
+    color: #D2FF72;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#side-menu li:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+/* Settings Gear Icon Styling */
+#gear-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-image: url('images/gear.png');
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    z-index: 4;
+}
+
+/* Rotating Gear Icon */
+#gear-icon.rotated {
+    transform: rotate(360deg);
+}
+
+/* Settings Menu */
+#settings-menu {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Darker background to match chill vibe */
+    border-radius: 8px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 4;
+    width: 200px;
+}
+
+/* Menu Option Styling (Minimalistic with Neon Effect) */
+.menu-option {
+    color: #B5B5B5; /* Soft light grey text */
+    background: rgba(0, 0, 0, 0.6); /* Dark background */
+    padding: 10px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 5px; /* Subtle rounded corners */
+    transition: background 0.3s, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s;
+}
+
+/* Neon hover effect */
+.menu-option:hover {
+    background: rgba(0, 0, 0, 0.75); /* Slightly darker for hover */
+    color: #00FF00; /* Neon green text */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Neon green glow */
+    transform: scale(1.05);  /* Slightly grow the button */
+}
+
+/* Global body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative; /* So that the button can be positioned relative to the body */
+    height: 100vh; /* Full screen height */
+    background-color: #f4f4f4; /* Light background color */
+}
+
+/* Logout button styles */
+#logout-button {
+    position: fixed;
+    bottom: 20px;  /* 20px from the bottom */
+    right: 20px;   /* 20px from the right */
+    padding: 10px 20px;
+    background-color: #D2FF72;  /* Soft neon green background */
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+}
+
+/* Hover effect for the button */
+#logout-button:hover {
+    background-color: #A0FF5A; /* Darker neon green on hover */
+    transform: scale(1.1);  /* Slightly grow the button on hover */
+}
+
+/* Focus effect for the button */
+#logout-button:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Neon glow when focused */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    #side-menu {
+        width: 200px;
+    }
+}
